@@ -1,4 +1,4 @@
-# Лебедева Анна, 22А когорта - Финальный проект. Инженер по тестированию плюс.
+
 from http.client import (responses)
 import configuration
 import data
@@ -11,14 +11,9 @@ def post_new_orders(body):
                          json=body)
 
 def get_order(track):
-    url = "/v1/orders/track?t=" + str(track)
-    return requests.get(configuration.URL_SERVICE + url)
+    ORDERS_TRACK = "/v1/orders/track?t=" + str(track)
+    return requests.get(configuration.URL_SERVICE + ORDERS_TRACK)
 
 
 
-response = post_new_orders(data.zakaz_body)
-track = response.json()["track"]
-print(track)
-get_order_response = get_order(track)
-print(get_order_response.status_code)
-assert get_order_response.status_code == 200
+
